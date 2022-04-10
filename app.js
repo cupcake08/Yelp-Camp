@@ -9,10 +9,10 @@ const ExpressError = require('./utils/ExpressError');
 
 const { campgroundSchema, reviewSchema } = require('./schema');
 const Review = require('./models/review');
-
 const app = express();
+require('dotenv').config()
 
-mongoose.connect('mongodb+srv://titsy:titsy123@cluster0.mtb4s.mongodb.net/yelp-camp?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGOURI)
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, 'connection error'));
